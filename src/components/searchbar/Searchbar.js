@@ -1,22 +1,21 @@
 import { Component } from 'react';
-import css from './searchbar.module.css'
+import css from './searchbar.module.css';
 import { IoSearchSharp } from 'react-icons/io5';
+import propTypes from 'prop-types';
 
 class Searchbar extends Component {
   state = {
     query: '',
-    };
-    
-    handleChange = evt => { 
-        this.setState({ query: evt.target.value })       
+  };
 
-    }
+  handleChange = evt => {
+    this.setState({ query: evt.target.value });
+  };
 
-    handleSubmit = evt => { 
-        evt.preventDefault();
-        this.props.onSubmit(this.state.query);
-    }
-
+  handleSubmit = evt => {
+    evt.preventDefault();
+    this.props.onSubmit(this.state.query);
+  };
 
   render() {
     return (
@@ -27,8 +26,8 @@ class Searchbar extends Component {
             <span className={css.SearchForm_button_label}></span>
           </button>
 
-          <input          
-          className={css.SearchForm_input}  
+          <input
+            className={css.SearchForm_input}
             onChange={this.handleChange}
             type="text"
             autoComplete="off"
@@ -40,5 +39,9 @@ class Searchbar extends Component {
     );
   }
 }
+
+Searchbar.propTypes = {
+  onSubmit: propTypes.func.isRequired,
+};
 
 export default Searchbar;

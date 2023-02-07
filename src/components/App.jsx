@@ -21,7 +21,7 @@ class App extends Component {
   async componentDidUpdate(_, prevState) {
     const { query, page } = this.state;
 
-    if (prevState.query !== query || prevState.page !== page)
+    if (prevState.query !== query || prevState.page !== page) {
       fetchImages(query, page)
         .then(response => {
           this.setState(prevState => ({
@@ -35,6 +35,7 @@ class App extends Component {
         .finally(() => {
           this.setState({ loader: false });
         });
+    }
   }
 
   handleClick = () => {
