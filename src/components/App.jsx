@@ -14,12 +14,8 @@ class App extends Component {
     loader: false,
   };
 
-  handleSubmit = query => {
-    if (!query) {
-      alert('Please enter something.');
-    } else {
+  handleSubmit = query => {    
       this.setState({ query: query, page: 1, loader: true });
-    }
   };
 
   async componentDidUpdate(_, prevState) {
