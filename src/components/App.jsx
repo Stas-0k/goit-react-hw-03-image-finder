@@ -15,7 +15,11 @@ class App extends Component {
   };
 
   handleSubmit = query => {
-    this.setState({ query: query, page: 1, loader: true });
+    if (!query) {
+      alert('Please enter something.');
+    } else {
+      this.setState({ query: query, page: 1, loader: true });
+    }
   };
 
   async componentDidUpdate(_, prevState) {
@@ -55,7 +59,7 @@ class App extends Component {
         <Searchbar onSubmit={this.handleSubmit} />
         {this.state.loader && <Loader />}
         <ImageGallery images={this.state.images} />
-        {this.state.images.length > 0 && <Button onClick={this.handleClick} />}
+        {this.state.images.length > 0 && this.state.images.length<this.state.total && (<Button onClick={this.handleClick} />)}
       </div>
     );
   }
